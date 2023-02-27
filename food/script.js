@@ -15,7 +15,6 @@ const showFood = meals => {
         const mealDiv = document.createElement('div');
         mealDiv.classList.add('col');
         mealDiv.innerHTML = `
-    <div>
     <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${meal.strMeal}</h5>
@@ -44,19 +43,7 @@ const mealDetails = (idMeal) => {
         .then(data => displayMealDetails(data.meals[0]));
         // .catch(error => console.log(error))
 }
-//using async await------->
-const mealDetails2 = async (idMeal) => {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
-    try {
-        const res = await fetch(url);
-        const data = await res.json();
-        displayMealDetails(data.meals[0])
-    }
 
-    catch (error) {
-        return alert('Enter valie input')
-    }
-}
 
 
 const displayMealDetails = meal => {
@@ -68,3 +55,19 @@ const displayMealDetails = meal => {
     `
 }
 foodData('fish') 
+
+
+
+//using async await------->
+// const mealDetails2 = async (idMeal) => {
+//     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+//     try {
+//         const res = await fetch(url);
+//         const data = await res.json();
+//         displayMealDetails(data.meals[0])
+//     }
+
+//     catch (error) {
+//         return alert('Enter valie input')
+//     }
+// }
