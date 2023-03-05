@@ -24,16 +24,18 @@ const showTempData = (data) => {
 
 
 document.getElementById('searchBtn').addEventListener('click', function () {
-    const cityName = document.getElementById('cityName').value;
-    loadTempData(cityName)
-    document.getElementById('cityName').value = '';
+    coommonFunction()
 })
 document.getElementById('cityName').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        const cityName = document.getElementById('cityName').value;
-        loadTempData(cityName)
-        document.getElementById('cityName').value = '';
+        coommonFunction()
     }
 
 })
+
+const coommonFunction = () => {
+    const cityName = document.getElementById('cityName').value;
+    loadTempData(cityName)
+    document.getElementById('cityName').value = '';
+}
 loadTempData('Dhaka')
