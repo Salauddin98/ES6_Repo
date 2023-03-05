@@ -19,7 +19,7 @@ console.log(oneParameter(10));
 
 // (Interview question difference between function declaration ,,, function exprasion and arrow function)---------------------------
 
-//3 dots---->spread operator
+//3 dots------------------>spread operator
 const maxNumber = [10,44,55,2,90,1000];
 console.log(...maxNumber);
 const largestNumber = Math.max(...maxNumber);
@@ -35,7 +35,7 @@ const[first,second] = [10,20];
 console.log(first,second);
 
 
-//some show
+//some show------------------->
 const[a,b,...c] = [10,20,30,40,50,60];
 console.log(a,b,c);
 // here first and second element cover first two paramerter but last parameter cover all the last element except first 2 number
@@ -57,11 +57,11 @@ findFirstForEach.forEach(name => console.log(name)) ;
 
 //filter function practice----->
 const numberValue = [20,21,33,5,8];
-console.log(numberValue.filter(find => find % 2===0));
+console.log(numberValue.filter(find => find % 2 === 0));
 
 //find function practice----->(its return first successful condition result)
 const numberValueFind = [20,21,33,5,8];
-console.log(numberValue.filter(find => find % 2 ===0 ));
+console.log(numberValue.find(find => find % 2 ===0 ));
 
 
 

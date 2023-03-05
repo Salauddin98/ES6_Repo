@@ -116,7 +116,8 @@ const reduceResult = arrayReduce.reduce((previous, current) => {
 
 console.log(reduceResult);
 
-//class practice-------->
+
+//class practice----------------->
 class Students {
   name;
   department;

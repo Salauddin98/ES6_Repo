@@ -3,7 +3,7 @@ const loadData = () => {
         .then(res => res.json())
         .then(data => showOutput(data))
 }
-
+ 
 const showOutput = (data) => {
     const cardContainer = document.getElementById('cardContainer');
     data.forEach(element => {

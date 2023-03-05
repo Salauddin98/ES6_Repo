@@ -19,7 +19,7 @@ console.log(backTick);
 const arrowDefault = (a, b = 10) => a + b;
 console.log(arrowDefault(10));
 
-//write an array function return even name ---->
+//write an array function return even name ----------------->
 const friendName = ['salauddin', 'alauddin', 'afseruddin', 'jamaluddin'];
 const check = friendName => {
     const updateResult = [];
@@ -33,12 +33,12 @@ const check = friendName => {
 }
 console.log(check(friendName));
 
-//using filter function----->
+//using filter function---------------->
 const findEvenName = friendName.filter(value => value.length % 2 === 0)
 console.log(findEvenName);
 
 
-//using arrow function find square and average ---->
+//using arrow function find square and average --------------->
 const arrayElement = [2, 4, 6, 8, 10];
 const findAverageResult = arrayElement => {
     const storeValue = [];
@@ -63,6 +63,18 @@ const margeTowArray = [...array1, ...array2];
 
 const maximumNumber = margeTowArray => Math.max(...margeTowArray);
 console.log(maximumNumber(margeTowArray));
+
+//callback function practice---------------->
+function practice1(callback){
+    console.log("Hi my name is salauddin");
+    callback();
+}
+
+function practice2(){
+    console.log("Hi i am a Mohammed")
+}
+
+practice1(practice2)
 
 
 

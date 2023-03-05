@@ -4,6 +4,7 @@
 //         .then(data => showResult(data))
 // }
 // const showResult = (data) => {
+
 //     const cardContainer = document.getElementById('cardContainer');
 //     data.forEach(element => {
 //         const div = document.createElement('div');
@@ -42,6 +43,7 @@ const countryName = (region) => {
     })
 }
 
+
 const searchCountry = (item) => {
   const cardContainer = document.getElementById('cardContainer');
   cardContainer.innerText = '';
@@ -57,7 +59,7 @@ const searchCountry = (item) => {
           <h4 class="card-title">Name: ${element.name.common}</h4>
           <h5 class="card-text">Official Name: ${element.name.official}</h5>
           <h5 class="card-text">Capital City: ${element.capital ? element.capital[0] : 'No Capital'}</h5>
-          <button onclick="detailsBtn(${element.ccn3})" class="btn btn-primary">Show Details</button>
+          <button onclick="detailsBtn('${element.ccn3}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">Show Details</button>
         </div>
       </div>
       `
@@ -67,19 +69,21 @@ const searchCountry = (item) => {
 
 
 const detailsBtn = code => {
-  const url = `https://restcountries.com/v3.1/alpha/${code}`;
-  fetch(url)
+  const url2 = `https://restcountries.com/v3.1/alpha/${code}`;
+  fetch(url2)
     .then(res => res.json())
-    .then(data => showModalResult(data[0]))
+    .then(data => showModalResult(data))
 }
 const showModalResult = (items) => {
-  // console.log(items)
-  document.getElementById('mealDetailsLabel').innerText = items.name.common;
-  const foodBody = document.getElementById('foodBody');
-  foodBody.innerHTML = `
- <img class="img-fluid" src="${items.flags.svg}">
- <h1>${items.capital}</h1>
+  items.forEach(element => {
+    console.log(element)
+    document.getElementById('mealDetailsLabel').innerText = element.name.common;
+    const foodBody = document.getElementById('foodBody');
+    foodBody.innerHTML = `
+    <img class="img-fluid" src="${element.flags.svg}">
+    <h1>${element.capital}</h1>
  `
+  })
 }
 countryName('asia')
 

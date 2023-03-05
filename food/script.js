@@ -1,9 +1,12 @@
 const foodData = (searchText) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
-    console.log(url)
+    // console.log(url)
     fetch(url)
         .then(res => res.json())
-        .then(data => showFood(data.meals))
+        .then(data => {
+            showFood(data.meals)
+            console.log(data)
+        })
 }
 
 const showFood = meals => {
@@ -40,13 +43,17 @@ const mealDetails = (idMeal) => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
     fetch(url)
         .then(res => res.json())
-        .then(data => displayMealDetails(data.meals[0]));
-        // .catch(error => console.log(error))
+        .then(data => {
+            console.log(data.meals[0]);
+            displayMealDetails(data.meals[0])
+        });
+    // .catch(error => console.log(error))
 }
 
 
 
 const displayMealDetails = meal => {
+    console.log(meal)
     document.getElementById('mealDetailsLabel').innerText = meal.strMeal;
     const foodBody = document.getElementById('foodBody');
     foodBody.innerHTML = `
@@ -54,7 +61,7 @@ const displayMealDetails = meal => {
     <h1>${meal.strArea}</h1>
     `
 }
-foodData('fish') 
+foodData('fish')
 
 
 
