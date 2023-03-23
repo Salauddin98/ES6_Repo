@@ -73,12 +73,8 @@ const showNewsDataLoad = (data, category_name) => {
                    </div>
 
                    <div> <i class="fas fa-eye"><span> ${total_view ? total_view : '0'}</span></i></div>
-                   <div> 
-                   <i class="fas fa-star"></i>
-                   <i class="fas fa-star"></i>
-                   <i class="fas fa-star"></i>
-                   <i class="fas fa-star"></i>
-                   <i class="fas fa-star-half"></i>
+                   <div id="try"> 
+                   ${showRating(rating.number)}
                    <p class="text-center">${rating.number}</p>
                    </div>
 
@@ -124,7 +120,7 @@ const showModalDetails = (data) => {
                    </div>
 
                    <div> <i class="fas fa-eye"><span> ${item.total_view ? item.total_view : '0'}</span></i></div>
-                   <div> 
+                   <div id="ratingCount"> 
                    <i class="fas fa-star"></i>
                    <i class="fas fa-star"></i>
                    <i class="fas fa-star"></i>
@@ -136,16 +132,8 @@ const showModalDetails = (data) => {
     })
 }
 
-
-// const todayPickShow = () => {
-//     let fetchDates = fetchData.filter(item => {
-//         item.others_info.is_todays_pick === true;
-//     })
-//     showNewsDataLoad(fetchDates)
-// }
-
 const trendingNews = () => {
-    // console.log(fetchData)
+    console.log(fetchData)
     let trendingNews = fetchData.filter(item => item.others_info.is_trending === true)
     if (trendingNews.length === 0) {
         Swal.fire({
@@ -176,3 +164,51 @@ const todayPickShow = () => {
         showNewsDataLoad(todayPickShow, alertTitle)
     }
 }
+
+
+//Show ratting dynamically----->
+const showRating = rating => {
+    let ratingCount = '';
+    for (i = 0; i < Math.floor(rating); i++) {
+        ratingCount += `
+        <i class="fas fa-star"></i>
+        `
+    }
+    if (rating - Math.floor(rating) > 0) {
+        ratingCount += `
+        <i class="fas fa-star-half"></i>
+        `
+    }
+    return ratingCount;
+}
+
+//Sort by ratting----->
+const ratingBySort = () => {
+    console.log(fetchData)
+    const sortData = fetchData.sort((a, b) => (a.rating.number < b.rating.number) ? 1 : ((b.rating.number < a.rating.number) ? -1 : 0));
+    if (sortData.length === 0){
+        return
+    }else{
+        const alertTitle = document.getElementById('alertTitle').innerText;
+        showNewsDataLoad(sortData,alertTitle)
+    }
+       
+}
+
+// const deleteBtnSelect = document.querySelectorAll('.items');
+// const todayPickShow = fetchData.filter(item => item.others_info.is_todays_pick === true);
+// for (const select of deleteBtnSelect) {
+//     select.addEventListener('click', function (event) {
+
+//         console.log(event.target.value);
+//     })
+// }
+
+// const showItemClick = ()=>{
+//     const todayPickShow = fetchData.filter(item => item.rating.number > 4);
+//     console.log(todayPickShow)
+// }
+
+
+
+
